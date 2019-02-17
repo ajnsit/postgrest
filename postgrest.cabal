@@ -32,12 +32,12 @@ executable postgrest
     "-with-rtsopts=-N -I2"
   default-language:    Haskell2010
   build-depends:       auto-update
-                     , base >= 4.8 && < 4.10
-                     , hasql >= 1.3 && < 1.4
-                     , hasql-pool >= 0.5 && < 0.6
-                     , hasql-transaction >= 0.7 && < 0.8
+                     , base >= 4.8
+                     , hasql
+                     , hasql-pool
+                     , hasql-transaction
                      , postgrest
-                     , protolude == 0.2.2
+                     , protolude
                      , text
                      , time
                      , warp
@@ -54,33 +54,36 @@ library
   default-extensions:  OverloadedStrings, QuasiQuotes, NoImplicitPrelude
   build-depends:       aeson
                      , ansi-wl-pprint
-                     , base >= 4.8 && < 4.10
+                     , base >= 4.8
                      , base64-bytestring
                      , bytestring
                      , case-insensitive
                      , cassava
-                     , configurator-ng == 0.0.0.1
+                     -- , configurator-ng
                      , containers
                      , contravariant
                      , contravariant-extras
                      , either
                      , gitrev
-                     , hasql >= 1.3 && < 1.4
-                     , hasql-pool >= 0.5 && < 0.6
-                     , hasql-transaction >= 0.7 && < 0.8
+                     , hasql
+                     , hasql-pool
+                     , hasql-transaction
                      , heredoc
                      , HTTP
                      , http-types
                      , insert-ordered-containers
                      , interpolatedstring-perl6
-                     , jose == 0.7.0.0
+                     , jose
                      , lens
                      , lens-aeson
                      , network-uri
-                     , optparse-applicative >= 0.13 && < 0.15
+                     , optparse-applicative
                      , parsec
-                     , protolude == 0.2.2
-                     , Ranged-sets == 0.3.0
+                     , protolude
+                     -- , Ranged-sets
+                     , HUnit
+                     , QuickCheck
+                     -- End for ranged sets
                      , regex-tdfa
                      , scientific
                      , swagger2
@@ -93,8 +96,38 @@ library
                      , wai-extra
                      , wai-middleware-static
                      , cookie
+                     -- Extra deps for Configurator
+                     , attoparsec
+                     , dlist
+                     , directory
+                     , data-ordlist
+                     , fail
+                     , hashable
+                     , unix-compat
+                     -- End for configurator
+                     -- Extra deps for Critbit
+                     , array
+                     , deepseq
+                     -- End extra deps for Critbit
 
   Other-Modules:       Paths_postgrest
+                     , Data.Ranged.Boundaries
+                     , Data.Ranged.Ranges
+                     , Data.Configurator
+                     , Data.Configurator.Config
+                     , Data.Configurator.Config.Implementation
+                     , Data.Configurator.Config.Internal
+                     , Data.Configurator.FromValue
+                     , Data.Configurator.FromValue.Implementation
+                     , Data.Configurator.Parser
+                     , Data.Configurator.Parser.Implementation
+                     , Data.Configurator.Syntax
+                     , Data.Configurator.Types
+                     , Data.Configurator.Types.Internal
+                     , Data.CritBit.Core
+                     , Data.CritBit.Map.Lazy
+                     , Data.CritBit.Tree
+                     , Data.CritBit.Types.Internal
   Exposed-Modules:     PostgREST.ApiRequest
                      , PostgREST.App
                      , PostgREST.Auth
@@ -147,20 +180,20 @@ Test-Suite spec
                      , aeson-qq
                      , async
                      , auto-update
-                     , base >= 4.8 && < 4.10
+                     , base >= 4.8
                      , bytestring
                      , base64-bytestring
                      , case-insensitive
                      , cassava
                      , containers
                      , contravariant
-                     , hasql >= 1.3 && < 1.4
-                     , hasql-pool >= 0.5 && < 0.6
-                     , hasql-transaction >= 0.7 && < 0.8
+                     , hasql
+                     , hasql-pool
+                     , hasql-transaction
                      , heredoc
-                     , hjsonschema == 1.5.0.1
+                     , hjsonschema
                      , hspec
-                     , hspec-wai >= 0.7.0
+                     , hspec-wai
                      , hspec-wai-json
                      , http-types
                      , lens
@@ -168,7 +201,7 @@ Test-Suite spec
                      , monad-control
                      , postgrest
                      , process
-                     , protolude == 0.2.2
+                     , protolude
                      , regex-tdfa
                      , time
                      , transformers-base
